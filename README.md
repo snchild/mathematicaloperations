@@ -20,4 +20,5 @@
 
 {Make a list of websites that you found helpful in this project}
 * [Sparks By Examples](https://sparkbyexamples.com/r-programming/convert-list-to-r-dataframe/)
-* [Web Site Name](http://url.link.goes.here)
+* [RDocumentation](https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/paste)
+* [Geeks For Geeks](https://www.geeksforgeeks.org/check-if-an-object-is-of-complex-data-type-in-r-programming-is-complex-function/#)

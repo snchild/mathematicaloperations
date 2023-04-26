@@ -26,11 +26,20 @@ exp <- function(val1, val2) {
     return(val1^val2)
 }
 data_converstion <- function(value) {
-    # check for what data type it should be
-    # check to see if any numbers are complex
-    # convert the type (using a case of?)
-    return(value)
+    # if converting the type leaves the actual value unchanged,
+    # it's safe to assume it should be that data type
+
+    if (as.character(as.complex(value)) == value) {
+        converted_value <- as.complex(value)
+    } else if (as.character(as.numeric(value)) == value) {
+       converted_value <- as.numeric(value)
+    } else {
+        converted_value <- as.integer(value)
+    }
+
+    return(converted_value)
 }
+
 # create all the lists
 input_list <- list()
 add_list <- list()
@@ -44,15 +53,13 @@ exp_list <- list()
 i_1 <- readline("Please enter a pair of numbers: ")
 i_2 <- readline()
 
-input_list <- append(input_list, paste(c(i_1, i_2),
-                    sep = ", ", collapse = ", "))
-
 # convert data types
-v_1 <- as.numeric(i_1)
-v_2 <- as.numeric(i_2)
+v_1 <- data_converstion(i_1)
+v_2 <- data_converstion(i_2)
 
 # stretch goal: prompt the user for a power function
-
+input_list <- append(input_list, paste(c(i_1, i_2),
+                    sep = ", ", collapse = ", "))
 add_list <- append(add_list, add(v_1, v_2))
 sub_list <- append(sub_list, sub(v_1, v_2))
 mult_list <- append(mult_list, mult(v_1, v_2))
