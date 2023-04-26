@@ -25,20 +25,50 @@ div <- function(val1, val2) {
 exp <- function(val1, val2) {
     return(val1^val2)
 }
+data_converstion <- function(value) {
+    # check for what data type it should be
+    # check to see if any numbers are complex
+    # convert the type (using a case of?)
+    return(value)
+}
+# create all the lists
+input_list <- list()
+add_list <- list()
+sub_list <- list()
+mult_list <- list()
+div_list <- list()
+exp_list <- list()
 
 # prompt the user for pairs of numbers
-# check to see if any numbers are complex
+# starting with just one pair - later add a loop
+i_1 <- readline("Please enter a pair of numbers: ")
+i_2 <- readline()
+
+input_list <- append(input_list, paste(c(i_1, i_2),
+                    sep = ", ", collapse = ", "))
+
+# convert data types
+v_1 <- as.numeric(i_1)
+v_2 <- as.numeric(i_2)
+
 # stretch goal: prompt the user for a power function
 
-my_data_frame <- data.frame(
-    # perform artithmetic
-    # assign values to columns
-    Addition = c(add(1, 2), add(2, 3), add(3, 4)),
-    Subtraction = c(sub(1, 2), sub(2, 3), sub(3, 4)),
-    Multiplication = c(mult(1, 2), mult(2, 3), mult(3, 4)),
-    Division = c(div(1, 2), div(2, 3), div(3, 4)),
-    Exponential = c(exp(1, 2), exp(2, 3), exp(3, 4))
-    )
+add_list <- append(add_list, add(v_1, v_2))
+sub_list <- append(sub_list, sub(v_1, v_2))
+mult_list <- append(mult_list, mult(v_1, v_2))
+div_list <- append(div_list, div(v_1, v_2))
+exp_list <- append(exp_list, exp(v_1, v_2))
+
+my_nested_list <- list(Inputs = input_list,
+    Addition = add_list,
+    Subtraction = sub_list,
+    Multiplication = mult_list,
+    Division = div_list,
+    Exponential = exp_list)
+
+# Convert nested list to the dataframe by columns
+# This line of code is originally from Sparks By Examples
+my_data_frame <- as.data.frame(do.call(cbind, my_nested_list))
 
 print(my_data_frame)
 
