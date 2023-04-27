@@ -48,23 +48,35 @@ mult_list <- list()
 div_list <- list()
 exp_list <- list()
 
-# prompt the user for pairs of numbers
-# starting with just one pair - later add a loop
-i_1 <- readline("Please enter a pair of numbers: ")
-i_2 <- readline()
+keep_prompting <- TRUE
+print("Please enter a pair of numbers, separated by line.")
+print("When you are done, press enter instead of entering numbers.")
 
-# convert data types
-v_1 <- data_converstion(i_1)
-v_2 <- data_converstion(i_2)
+while (keep_prompting) {
+    # prompt the user for pairs of numbers
+    # starting with just one pair - later add a loop
+    i_1 <- readline("\n>> ")
+    i_2 <- readline(">> ")
 
-# stretch goal: prompt the user for a power function
-input_list <- append(input_list, paste(c(i_1, i_2),
-                    sep = ", ", collapse = ", "))
-add_list <- append(add_list, add(v_1, v_2))
-sub_list <- append(sub_list, sub(v_1, v_2))
-mult_list <- append(mult_list, mult(v_1, v_2))
-div_list <- append(div_list, div(v_1, v_2))
-exp_list <- append(exp_list, exp(v_1, v_2))
+    if (i_1 == "") {
+        keep_prompting <- FALSE
+        break
+    }
+
+    # convert data types
+    v_1 <- data_converstion(i_1)
+    v_2 <- data_converstion(i_2)
+
+    # stretch goal: prompt the user for a power function
+    input_list <- append(input_list, paste(c(i_1, i_2),
+                        sep = ", ", collapse = ", "))
+    add_list <- append(add_list, add(v_1, v_2))
+    sub_list <- append(sub_list, sub(v_1, v_2))
+    mult_list <- append(mult_list, mult(v_1, v_2))
+    div_list <- append(div_list, div(v_1, v_2))
+    exp_list <- append(exp_list, exp(v_1, v_2))
+}
+
 
 my_nested_list <- list(Inputs = input_list,
     Addition = add_list,
