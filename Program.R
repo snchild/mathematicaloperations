@@ -1,8 +1,3 @@
-#goals:
-#   Use at least 5 different R datatypes in your program:
-#            character, numeric, integer, complex, logical
-#   Incorporate at least one loop that works with lists or arrays
-
 #stretch goal:
 #   Use the case of coding block
 
@@ -37,6 +32,12 @@ data_converstion <- function(value) {
         converted_value <- as.integer(value)
     }
 
+    # instead of multiple if else statements, do a case_when statement
+    # problem: R can't find case_when()
+#    case_when (as.character(as.complex(value)) == value ~ converted_value <- as.complex(value),
+#                as.character(as.numeric(value)) == value ~ converted_value <- as.numeric(value),
+#                as.character(as.integer(value)) ~ converted_value <- as.integer(value))
+
     return(converted_value)
 }
 
@@ -50,11 +51,11 @@ exp_list <- list()
 
 keep_prompting <- TRUE
 print("Please enter a pair of numbers, separated by line.")
+print("If using complex numbers, use the format a+bi.")
 print("When you are done, press enter instead of entering numbers.")
 
 while (keep_prompting) {
     # prompt the user for pairs of numbers
-    # starting with just one pair - later add a loop
     i_1 <- readline("\n>> ")
     i_2 <- readline(">> ")
 
@@ -76,7 +77,6 @@ while (keep_prompting) {
     div_list <- append(div_list, div(v_1, v_2))
     exp_list <- append(exp_list, exp(v_1, v_2))
 }
-
 
 my_nested_list <- list(Inputs = input_list,
     Addition = add_list,
