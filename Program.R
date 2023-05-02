@@ -1,6 +1,9 @@
 #stretch goal:
 #   Use the case of coding block
 
+#need dplyr library which case case_when function
+library(dplyr)
+
 add <- function(val1, val2) {
     return(val1 + val2)
 }
@@ -24,19 +27,36 @@ data_converstion <- function(value) {
     # if converting the type leaves the actual value unchanged,
     # it's safe to assume it should be that data type
 
-    if (as.character(as.complex(value)) == value) {
-        converted_value <- as.complex(value)
-    } else if (as.character(as.numeric(value)) == value) {
-       converted_value <- as.numeric(value)
-    } else {
-        converted_value <- as.integer(value)
-    }
+#    if (as.character(as.complex(value)) == value) {
+#        converted_value <- as.complex(value)
+#    } else if (as.character(as.numeric(value)) == value) {
+#       converted_value <- as.numeric(value)
+#    } else {
+#        converted_value <- as.integer(value)
+#    }
+
+    cmplx <- as.character(as.complex(value))
+    ntgr <- as.character(as.integer(value))
+    nmrc <- as.character(as.numeric(value))
+    print(cmplx)
+    print(nmrc)
+    print(ntgr)
 
     # instead of multiple if else statements, do a case_when statement
     # problem: R can't find case_when()
+    type <- case_when(cmplx == value ~ 1, ntgr == value ~ 2, nmrc == value ~ 3)
+    print("first converted value: ")
+    print(type)
+    converted_value <- case_when(type == 2 ~ as.integer(value), type == 1 ~ as.complex(value), type == 3 ~ as.numeric(value))
+
+#   converted_value <- case_when(cmplx == value ~ as.complex(value), ntgr == value ~ as.integer(value), nmrc == value ~ as.numeric(value))
+#    case_when(cmplx == value ~ converted_value <- as.complex(value), nmrc == value ~ converted_value <- as.numeric(value), ntgr == value ~ converted_value <- as.integer(value))
 #    case_when (as.character(as.complex(value)) == value ~ converted_value <- as.complex(value),
 #                as.character(as.numeric(value)) == value ~ converted_value <- as.numeric(value),
-#                as.character(as.integer(value)) ~ converted_value <- as.integer(value))
+#                as.character(as.integer(value)) == value ~ converted_value <- as.integer(value))
+
+    print("second converted value: ")
+    print(converted_value)
 
     return(converted_value)
 }
