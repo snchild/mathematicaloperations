@@ -20,6 +20,6 @@
 
 {Make a list of websites that you found helpful in this project}
 * [Sparks By Examples](https://sparkbyexamples.com/r-programming/convert-list-to-r-dataframe/)
-* [RDocumentation](https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/paste)
+* [RDocumentation](https://www.rdocumentation.org/packages/dplyr/versions/1.0.10/topics/case_when)
 * [Geeks For Geeks](https://www.geeksforgeeks.org/check-if-an-object-is-of-complex-data-type-in-r-programming-is-complex-function/#)
 * [Sharp Sight](https://www.sharpsightlabs.com/blog/case-when-r/)

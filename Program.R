@@ -1,9 +1,6 @@
 #stretch goal:
 #   Use the case of coding block
 
-#need dplyr library which case case_when function
-library(dplyr)
-
 add <- function(val1, val2) {
     return(val1 + val2)
 }
@@ -27,39 +24,18 @@ data_converstion <- function(value) {
     # if converting the type leaves the actual value unchanged,
     # it's safe to assume it should be that data type
 
-#    if (as.character(as.complex(value)) == value) {
-#        converted_value <- as.complex(value)
-#    } else if (as.character(as.numeric(value)) == value) {
-#       converted_value <- as.numeric(value)
-#    } else {
-#        converted_value <- as.integer(value)
-#    }
+    if (as.character(as.complex(value)) == value) {
+        converted_value <- as.complex(value)
+    } else if (as.character(as.numeric(value)) == value) {
+       converted_value <- as.numeric(value)
+    } else {
+        converted_value <- as.integer(value)
+    }
 
-    complex_version <- as.complex(value)
-    integer_version <- as.integer(value)
-    numberic_version <- as.numeric(value)
-
-    #something to notice: in the first case_when function it runs fine 
-    #in the second, it does not. The only difference is what happens if
-    #value IS the same as the complex version
-    #solutions: idek
-
-    converted_value <- case_when(
-                as.character(integer_version) == value ~ integer_version,
-                as.character(numberic_version) == value ~ numberic_version,
-                as.character(complex_version) == value ~ 1000,
-                .default = 0)
-
-    print("converted value: ")
-    print(converted_value)
-    converted_value <- case_when(
-                as.character(integer_version) == value ~ integer_version,
-                as.character(numberic_version) == value ~ numberic_version,
-                as.character(complex_version) == value ~ complex_version,
-                .default = 0)
-
-    print("converted value: ")
-    print(converted_value)
+    # a case_when function cannot be used here because of the documentation
+    #   which says that all RHS have to be the same type of vector. That
+    #   means that I cannot use a case_when function to convert the value
+    #   into different types of vectors.
 
     return(converted_value)
 }
