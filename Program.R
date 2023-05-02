@@ -35,27 +35,30 @@ data_converstion <- function(value) {
 #        converted_value <- as.integer(value)
 #    }
 
-    cmplx <- as.character(as.complex(value))
-    ntgr <- as.character(as.integer(value))
-    nmrc <- as.character(as.numeric(value))
-    print(cmplx)
-    print(nmrc)
-    print(ntgr)
+    complex_version <- as.complex(value)
+    integer_version <- as.integer(value)
+    numberic_version <- as.numeric(value)
 
-    # instead of multiple if else statements, do a case_when statement
-    # problem: R can't find case_when()
-    type <- case_when(cmplx == value ~ 1, ntgr == value ~ 2, nmrc == value ~ 3)
-    print("first converted value: ")
-    print(type)
-    converted_value <- case_when(type == 2 ~ as.integer(value), type == 1 ~ as.complex(value), type == 3 ~ as.numeric(value))
+    #something to notice: in the first case_when function it runs fine 
+    #in the second, it does not. The only difference is what happens if
+    #value IS the same as the complex version
+    #solutions: idek
 
-#   converted_value <- case_when(cmplx == value ~ as.complex(value), ntgr == value ~ as.integer(value), nmrc == value ~ as.numeric(value))
-#    case_when(cmplx == value ~ converted_value <- as.complex(value), nmrc == value ~ converted_value <- as.numeric(value), ntgr == value ~ converted_value <- as.integer(value))
-#    case_when (as.character(as.complex(value)) == value ~ converted_value <- as.complex(value),
-#                as.character(as.numeric(value)) == value ~ converted_value <- as.numeric(value),
-#                as.character(as.integer(value)) == value ~ converted_value <- as.integer(value))
+    converted_value <- case_when(
+                as.character(integer_version) == value ~ integer_version,
+                as.character(numberic_version) == value ~ numberic_version,
+                as.character(complex_version) == value ~ 1000,
+                .default = 0)
 
-    print("second converted value: ")
+    print("converted value: ")
+    print(converted_value)
+    converted_value <- case_when(
+                as.character(integer_version) == value ~ integer_version,
+                as.character(numberic_version) == value ~ numberic_version,
+                as.character(complex_version) == value ~ complex_version,
+                .default = 0)
+
+    print("converted value: ")
     print(converted_value)
 
     return(converted_value)
