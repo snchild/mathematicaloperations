@@ -39,6 +39,20 @@ data_converstion <- function(value) {
 
     return(converted_value)
 }
+read_equation <- function(my_equation, my_variable){
+    #loop through each character in equation
+    #perform logic to determine if that character is a coefficient,
+    # a variable, a power, or a carrot
+    #append the coefficients or powers to the corresponding lists
+    return() #list of coefficients and list of powers
+}
+perform_derivative <- function(my_coefficients, my_powers){
+    #loop though an index
+    #double check that neither the coefficient nor the power is 0
+    #make the new coefficient into coeff*power
+    # make the power into power - 1
+    return() #list of new coefficients and list of new powers
+}
 
 # create all the lists
 input_list <- list()
@@ -49,7 +63,7 @@ div_list <- list()
 exp_list <- list()
 
 keep_prompting <- TRUE
-print("Please enter a pair of numbers, separated by line.")
+print("Please enter a pair of numbers, with each number on separate lines.")
 print("If using complex numbers, use the format a+bi.")
 print("When you are done, press enter instead of entering numbers.")
 
@@ -76,6 +90,12 @@ while (keep_prompting) {
     div_list <- append(div_list, div(v_1, v_2))
     exp_list <- append(exp_list, exp(v_1, v_2))
 }
+
+# prompts the user for a power series
+
+# converts the input to coefficients and powers
+# performs derivative
+# displays the derivative
 
 my_nested_list <- list(Inputs = input_list,
     Addition = add_list,
