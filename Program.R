@@ -40,11 +40,21 @@ data_converstion <- function(value) {
     return(converted_value)
 }
 read_equation <- function(my_equation, my_variable){
+    my_coefficients <- list()
+    my_powers <- list()
+    current_object <- list()
+    current_type <- "c"
     #loop through each character in equation
-    #perform logic to determine if that character is a coefficient,
-    # a variable, a power, or a carrot
-    #append the coefficients or powers to the corresponding lists
-    return() #list of coefficients and list of powers
+    for (i in seq_along(my_equation)){
+        #perform logic to determine if that character is a coefficient,
+        # a variable, a power, or a carrot
+        #if the character is no longer an integer or ., append it to the list that correlates to the type and change the type if "p"
+        #if the character is a ^, change the type to p
+        #how to address poer of 1?
+        #how to addess constants at the end?
+        #append the coefficients or powers to the corresponding lists
+    }
+    return(list(my_coefficients, my_powers)) #list of coefficients and list of powers
 }
 perform_derivative <- function(my_coefficients, my_powers){
     #loop though an index
@@ -91,9 +101,20 @@ while (keep_prompting) {
     exp_list <- append(exp_list, exp(v_1, v_2))
 }
 
-# prompts the user for a power series
+# prompt the user for a power series
+print("Enter a power series, using only one variable. Use the ^ symbol to denote exponents.")
+my_eq <- readline("\n>> ")
+print("Enter the symbol that you used for your variable.")
+my_var <- readline("\n>> ")
 
 # converts the input to coefficients and powers
+# the notation %<-% supposedly lets me assign multiple things at once
+coeff_and_pow <- read_equation(my_eq, my_var)
+#split(coeff_and_pow, cut(seq_along(coeff_and_pow)), 2, drop = FALSE, labels = FALSE)
+coeff_list <- coeff_and_pow[1]
+powers_list <- coeff_and_pow[2]
+print(coeff_list)
+print(powers_list)
 # performs derivative
 # displays the derivative
 
