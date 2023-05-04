@@ -39,21 +39,39 @@ data_converstion <- function(value) {
 
     return(converted_value)
 }
-read_equation <- function(my_equation, my_variable){
-    my_coefficients <- list()
-    my_powers <- list()
+read_equation <- function(my_equation, my_variable) {
+    my_coefficients <- list(1)
+    my_powers <- list(5)
     current_object <- list()
-    current_type <- "c"
+    current_type <- "c" #might not use
     #loop through each character in equation
     for (i in seq_along(my_equation)){
-        #perform logic to determine if that character is a coefficient,
-        # a variable, a power, or a carrot
-        #if the character is no longer an integer or ., append it to the list that correlates to the type and change the type if "p"
-        #if the character is a ^, change the type to p
-        #how to address poer of 1?
-        #how to addess constants at the end?
-        #append the coefficients or powers to the corresponding lists
+        #come up with a different way to check if it's an int
+        if (as.character(as.integer(my_equation[i])) == my_equation[i] || my_equation[i] == ".") {
+            current_object <- append(current_object, my_equation[i])
+        } else if (my_equation[i] == my_variable) {
+            if (length(current_object) == 0) {
+                my_coefficients <- append(my_coefficients, "1")
+            } else {
+                my_coefficients <- append(my_coefficients,
+                                        paste(current_object, collapse = ""))
+                current_object <- list()
+            }
+        } else if (my_equation[i] == "+" || my_equation[i] == "-") {
+            if (length(current_object) == 0) {
+                my_powers <- append(my_powers, "1")
+            } else {
+                my_powers <- append(my_powers,
+                                        paste(current_object, collapse = ""))
+                current_object <- list()
+            }
+        }
+        #how to addess constants in middle?
     }
+    if (length(current_object) == 0) {
+        my_coefficients <- append(my_coefficients, paste(current_object, collapse = ""))
+        my_powers <- append(my_powers, "0")
+    } 
     return(list(my_coefficients, my_powers)) #list of coefficients and list of powers
 }
 perform_derivative <- function(my_coefficients, my_powers){
