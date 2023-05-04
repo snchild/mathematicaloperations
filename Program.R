@@ -40,16 +40,18 @@ data_converstion <- function(value) {
     return(converted_value)
 }
 read_equation <- function(my_equation, my_variable) {
-    my_coefficients <- list(1)
-    my_powers <- list(5)
+    my_coefficients <- list()
+    my_powers <- list()
     current_object <- list()
     current_type <- "c" #might not use
     #loop through each character in equation
-    for (i in seq_along(my_equation)){
+    for (i in 1:nchar(my_equation)){
+        char <- substr(my_equation, i, i)
         #come up with a different way to check if it's an int
-        if (as.character(as.integer(my_equation[i])) == my_equation[i] || my_equation[i] == ".") {
-            current_object <- append(current_object, my_equation[i])
-        } else if (my_equation[i] == my_variable) {
+        if (!is.na(as.integer(char)) || char == ".") {
+            print(char)
+            current_object <- append(current_object, char)
+        } else if (char == my_variable) {
             if (length(current_object) == 0) {
                 my_coefficients <- append(my_coefficients, "1")
             } else {
@@ -57,7 +59,7 @@ read_equation <- function(my_equation, my_variable) {
                                         paste(current_object, collapse = ""))
                 current_object <- list()
             }
-        } else if (my_equation[i] == "+" || my_equation[i] == "-") {
+        } else if (char == "+" || char == "-") {
             if (length(current_object) == 0) {
                 my_powers <- append(my_powers, "1")
             } else {
@@ -68,13 +70,15 @@ read_equation <- function(my_equation, my_variable) {
         }
         #how to addess constants in middle?
     }
+
     if (length(current_object) == 0) {
-        my_coefficients <- append(my_coefficients, paste(current_object, collapse = ""))
+        my_coefficients <- append(my_coefficients,
+                                    paste(current_object, collapse = ""))
         my_powers <- append(my_powers, "0")
-    } 
-    return(list(my_coefficients, my_powers)) #list of coefficients and list of powers
+    }
+    return(list(my_coefficients, my_powers))
 }
-perform_derivative <- function(my_coefficients, my_powers){
+perform_derivative <- function(my_coefficients, my_powers) {
     #loop though an index
     #double check that neither the coefficient nor the power is 0
     #make the new coefficient into coeff*power
@@ -128,7 +132,6 @@ my_var <- readline("\n>> ")
 # converts the input to coefficients and powers
 # the notation %<-% supposedly lets me assign multiple things at once
 coeff_and_pow <- read_equation(my_eq, my_var)
-#split(coeff_and_pow, cut(seq_along(coeff_and_pow)), 2, drop = FALSE, labels = FALSE)
 coeff_list <- coeff_and_pow[1]
 powers_list <- coeff_and_pow[2]
 print(coeff_list)
