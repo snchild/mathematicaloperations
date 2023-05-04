@@ -1,5 +1,6 @@
 #stretch goal:
 #   Use the case of coding block
+library(varhandle) #lets us uce check.numeric()
 
 add <- function(val1, val2) {
     return(val1 + val2)
@@ -49,7 +50,6 @@ read_equation <- function(my_equation, my_variable) {
         char <- substr(my_equation, i, i)
         #come up with a different way to check if it's an int
         if (!is.na(as.integer(char)) || char == ".") {
-            print(char)
             current_object <- append(current_object, char)
         } else if (char == my_variable) {
             if (length(current_object) == 0) {
@@ -134,7 +134,9 @@ my_var <- readline("\n>> ")
 coeff_and_pow <- read_equation(my_eq, my_var)
 coeff_list <- coeff_and_pow[1]
 powers_list <- coeff_and_pow[2]
+print("coefficients: ")
 print(coeff_list)
+print("powers: ")
 print(powers_list)
 # performs derivative
 # displays the derivative
