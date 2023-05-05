@@ -1,6 +1,5 @@
 #stretch goal:
 #   Use the case of coding block
-library(varhandle) #lets us uce check.numeric()
 
 add <- function(val1, val2) {
     return(val1 + val2)
@@ -71,10 +70,13 @@ read_equation <- function(my_equation, my_variable) {
         #how to addess constants in middle?
     }
 
-    if (length(current_object) == 0) {
+    if (length(current_object) != 0 && current_type == "c") {
         my_coefficients <- append(my_coefficients,
                                     paste(current_object, collapse = ""))
         my_powers <- append(my_powers, "0")
+    } else if (length(current_object) != 0 && current_type == "p") {
+        my_powers <- append(my_powers,
+                                    paste(current_object, collapse = ""))
     }
     return(list(my_coefficients, my_powers))
 }
