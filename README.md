@@ -6,7 +6,7 @@ This software performs basic arithemtic operations on pairs of numbers that the 
 
 The purpose of this software was to familiarize myself with the syntax that R uses. By writing this software, I was successful in my purpose.
 
-[Software Demo Video](http://youtube.link.goes.here)
+[Software Demo Video](https://youtu.be/WEo6SGR71QA)
 
 # Development Environment
 
