@@ -23,17 +23,17 @@ exp <- function(val1, val2) {
 data_converstion <- function(value) {
     # if converting the type leaves the actual value unchanged,
     # it's safe to assume it should be that data type
-    
+
     if (is.na(suppressWarnings(as.complex(value)))) {
         print("At least one of the inputs is not a number.")
         print("Please enter complex numbers or real numbers only.")
         converted_value <- FALSE
     } else if (as.character(as.complex(value)) == value) {
         converted_value <- as.complex(value)
-    } else if (as.character(as.numeric(value)) == value) {
-       converted_value <- as.numeric(value)
     } else if (as.character(as.integer(value)) == value) {
-        converted_value <- as.integer(value)
+       converted_value <- as.integer(value)
+    } else if (as.character(as.numeric(value)) == value) {
+        converted_value <- as.numeric(value)
     }
 
     # a case_when function cannot be used here because of the documentation
