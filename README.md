@@ -1,20 +1,18 @@
 # Overview
 
-{Talk about what you are trying to accomplish as a software engineer to further your learning.}
+I am attempting to learn the basics of R. Because R is commonly used in data analysis and statistics, I sought to write a software that involved mathematical operations.
 
-{Provide a description of your software}
+This software performs basic arithemtic operations on pairs of numbers that the user inputs. It starts off with prompting the user for numbers in pairs, stopping when the user submits two empty inputs. It then calculates the sum, difference, product, quotient, and the result of exponentiation. All of the calculated values are included in a data frame before the software finishes running. 
 
-{Describe your purpose for creating this software.}
-
-{Provide a link to your YouTube demonstration.  It should be a one minute demo of the software running and a walkthrough of the code.}
+The purpose of this software was to familiarize myself with the syntax that R uses. By writing this software, I was successful in my purpose.
 
 [Software Demo Video](http://youtube.link.goes.here)
 
 # Development Environment
 
-{Describe the tools that you used to develop the software}
+I used Virtual Studio Code to develop this software.
 
-{Describe the programming language that you used}
+The language used in this software was R.
 
 # Useful Websites
 

@@ -48,20 +48,16 @@ mult_list <- list()
 div_list <- list()
 exp_list <- list()
 
-keep_prompting <- TRUE
 print("Please enter a pair of numbers, separated by line.")
 print("If using complex numbers, use the format a+bi.")
 print("When you are done, press enter instead of entering numbers.")
 
-while (keep_prompting) {
+while (TRUE) {
     # prompt the user for pairs of numbers
     i_1 <- readline("\n>> ")
     i_2 <- readline(">> ")
 
-    if (i_1 == "") {
-        keep_prompting <- FALSE
-        break
-    }
+    if (i_1 == "") break
 
     # convert data types
     v_1 <- data_converstion(i_1)
